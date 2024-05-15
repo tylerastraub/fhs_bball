@@ -1,0 +1,49 @@
+<mat-toolbar [ngClass]="{'sidebar-button-open' : sidebarOpen, 'sidebar-button-closed' : !sidebarOpen}">
+    <button mat-icon-button
+        aria-label="Menu icon"
+        (click)="drawer.toggle(); openCloseSidebar()"
+        [ngClass]="{'sidebar-button-open' : sidebarOpen, 'sidebar-button-closed' : !sidebarOpen}">
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-drawer-container [hasBackdrop]="true">
+    <mat-drawer #drawer [mode]="'over'" class="sidebar">
+        <mat-nav-list>
+            <a mat-list-item>
+                <div class="center-flex">
+                    <mat-icon mat-list-icon>home</mat-icon>
+                    <span mat-line>Home</span>
+                </div>
+            </a>
+            <a mat-list-item>
+                <div class="center-flex">
+                    <mat-icon mat-list-icon>group</mat-icon>
+                    <span mat-line>Teams</span>
+                </div>
+            </a>
+            <a mat-list-item>
+                <div class="center-flex">
+                    <mat-icon mat-list-icon>event_note</mat-icon>
+                    <span mat-line>Seasons</span>
+                </div>
+            </a>
+            <a mat-list-item>
+                <div class="center-flex">
+                    <mat-icon mat-list-icon>format_list_numbered</mat-icon>
+                    <span mat-line>Power Rankings</span>
+                </div>
+            </a>
+            <a mat-list-item>
+                <div class="center-flex">
+                    <mat-icon mat-list-icon>menu_book</mat-icon>
+                    <span mat-line>Historic Records</span>
+                </div>
+            </a>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <h2>drawer content</h2>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
