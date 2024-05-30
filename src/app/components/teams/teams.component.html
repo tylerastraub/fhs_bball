@@ -1,1 +1,63 @@
-<p>teams works!</p>
+<div class="teams-list">
+    <label>
+        TEAMS
+    </label>
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th><a (click)="sort('name')">Manager</a></th>
+                <th><a (click)="sort('from')">From</a></th>
+                <th><a (click)="sort('to')">To</a></th>
+                <th><a (click)="sort('wins')">Wins</a></th>
+                <th><a (click)="sort('losses')">Losses</a></th>
+                <th><a (click)="sort('ties')">Ties</a></th>
+                <th><a (click)="sort('winPercent')">Win%</a></th>
+                <th><a (click)="sort('divisionTitles')">Division</a></th>
+                <th><a (click)="sort('playoffs')">Playoffs</a></th>
+                <th><a (click)="sort('finalsAppearances')">Finals</a></th>
+                <th><a (click)="sort('championships')">Championships</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+            *ngFor="let team of teams">
+                <td [ngClass]="{'inactive': team.active === 'FALSE'}" style="text-align: left;">
+                    <a routerLink="/teams/{{team.id}}">
+                        {{team.name}}{{team.active === 'FALSE' ? '*' : ''}}
+                    </a>
+                </td>
+                <td>
+                    {{team.from}}
+                </td>
+                <td>
+                    {{team.to}}
+                </td>
+                <td>
+                    {{team.wins}}
+                </td>
+                <td>
+                    {{team.losses}}
+                </td>
+                <td>
+                    {{team.ties}}
+                </td>
+                <td>
+                    {{team.winPercent}}
+                </td>
+                <td>
+                    {{team.divisionTitles}}
+                </td>
+                <td>
+                    {{team.playoffs}}
+                </td>
+                <td>
+                    {{team.finalsAppearances}}
+                </td>
+                <td>
+                    {{team.championships}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <footer>*Inactive teams</footer>
+</div>

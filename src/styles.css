@@ -1,6 +1,6 @@
 body {
     font-family: Helvetica, Arial, sans-serif;
-  }
+}
   
 .btn-wrapper {
   /* flexbox */
@@ -54,6 +54,16 @@ body {
 .btn-primary:active {
   background-color: #212020;
 }
-  
+
+.main {
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  box-shadow:
+    0 2px 4px 0 rgb(0 0 0 / 20%),
+    0 2.5rem 5rem 0 rgb(0 0 0 / 10%);
+  background-color: #FFFFFF;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

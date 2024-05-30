@@ -5,6 +5,7 @@ import { PagenotfoundComponent } from "../components/pagenotfound/pagenotfound.c
 
 export const appRoutes: Routes = [
     {path: 'teams', component: TeamsComponent},
+    // {path: 'teams/:team', component: TeamComponent},
     {path: '', component: HomeComponent},
     {path: '**', component: PagenotfoundComponent}
   ];

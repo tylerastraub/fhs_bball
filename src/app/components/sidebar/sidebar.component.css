@@ -46,7 +46,7 @@ mat-drawer-container {
 mat-drawer-content {
     display: flex;
     justify-content: center;
-    padding: 0.75rem;
+    background-color: #CCCCCC;
 }
 
 .sidebar {
@@ -88,7 +88,7 @@ mat-drawer-content {
 }
 
 .sidebar-button-closed {
-    background-color: #fafafa;
+    background-color: #cccccc;
 }
 
 .sidebar-button-open {
