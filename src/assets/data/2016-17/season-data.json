@@ -1,0 +1,26 @@
+[
+  {
+    "id": "nicko",
+    "name": "Nick Osborn",
+    "wins": "",
+    "losses": "",
+    "ties": "",
+    "regSeasonPlace": "",
+    "division": "",
+    "divisionPlace": "",
+    "divisionWins": "",
+    "divisionLosses": "",
+    "divisionTies": "",
+    "categoriesWon": "",
+    "categoriesLost": "",
+    "categoriesTied": "",
+    "pointsFor": "",
+    "pointsAgainst": "",
+    "playoffWins": "",
+    "playoffLosses": "",
+    "playoffPlace": 1,
+    "playoffWinnings": "",
+    "winStreak": "",
+    "lossStreak": ""
+  }
+]

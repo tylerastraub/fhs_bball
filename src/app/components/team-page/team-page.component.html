@@ -1,0 +1,15 @@
+<h1>{{year}} Season | {{seasonData.name}}</h1>
+
+<div class="season-navigation-pane">
+    <button *ngIf="year != minYear" routerLink="/teams/{{teamId}}/{{year | seasonYearModify: false}}"><< Previous Season</button>
+    <div></div>
+    <button *ngIf="year != maxYear" routerLink="/teams/{{teamId}}/{{year | seasonYearModify: true}}">Next Season >></button>
+</div>
+
+<ul>
+    <li><b>Record:</b> {{seasonData.wins}}-{{seasonData.losses}}-{{seasonData.ties}}, {{seasonData.regSeasonPlace | ordinal}} seed in the reg. season</li>
+    <li *ngIf="seasonData.division != ''"><b>Division: </b>{{seasonData.divisionPlace | ordinal}} in the {{seasonData.division}} division</li>
+    <li *ngIf="seasonData.categoriesWon != ''"><b>Categories Record:</b> {{seasonData.categoriesWon}}-{{seasonData.categoriesLost}}-{{seasonData.categoriesTied}}</li>
+    <li *ngIf="seasonData.pointsFor != ''"><b>Points scored per week:</b> {{seasonData.pointsFor}}</li>
+    <li *ngIf="seasonData.pointsAgainst != ''"><b>Points allowed per week:</b> {{seasonData.pointsAgainst}}</li>
+</ul>

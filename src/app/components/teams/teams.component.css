@@ -3,39 +3,6 @@ table {
     justify-content: center;
 }
 
-table, tr, td, th {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-table tr td, th {
-    font-size: 18px;
-    padding: 0.5rem;
-    text-align: center;
-}
-
-table tr th a {
-    display: block;
-    cursor: pointer;
-    user-select: none;
-}
-
-.table-striped tbody tr:nth-child(odd) td {
-    background-color: #FAFAFA;
-}
-
-.table-striped tbody tr:nth-child(even) td {
-    background-color: #DDDDDD;
-}
-
-.table-striped tbody tr:hover td {
-    background-color: #F2F5A9;
-}
-
-.table-striped thead th {
-    background-color: #fde8c3;
-}
-
 label {
     font-size: 3rem;
     font-weight: bold;

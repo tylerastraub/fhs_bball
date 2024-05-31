@@ -22,7 +22,7 @@
             <tr
             *ngFor="let team of teams">
                 <td [ngClass]="{'inactive': team.active === 'FALSE'}" style="text-align: left;">
-                    <a routerLink="/teams/{{team.id}}">
+                    <a routerLink="/teams/{{team.id}}/{{team.to}}">
                         {{team.name}}{{team.active === 'FALSE' ? '*' : ''}}
                     </a>
                 </td>

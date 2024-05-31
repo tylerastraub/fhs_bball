@@ -1,0 +1,17 @@
+ul {
+    padding-inline-start: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+.season-navigation-pane {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+}
+
+.align-right {
+    justify-content: flex-end;
+}
