@@ -7,9 +7,34 @@
 </div>
 
 <ul>
-    <li><b>Record:</b> {{seasonData.wins}}-{{seasonData.losses}}-{{seasonData.ties}}, {{seasonData.regSeasonPlace | ordinal}} seed in the reg. season</li>
-    <li *ngIf="seasonData.division != ''"><b>Division: </b>{{seasonData.divisionPlace | ordinal}} in the {{seasonData.division}} division</li>
+    <li><b>Record:</b> {{seasonData.wins}}-{{seasonData.losses}}-{{seasonData.ties}}, {{seasonData.regSeasonPlace | ordinal}} seed in the regular season</li>
+    <li *ngIf="seasonData.division != ''"><b>Division: </b>{{seasonData.divisionPlace | ordinal}} in the <a routerLink="/divisions/{{seasonData.division}}">{{seasonData.division}}</a> division</li>
     <li *ngIf="seasonData.categoriesWon != ''"><b>Categories Record:</b> {{seasonData.categoriesWon}}-{{seasonData.categoriesLost}}-{{seasonData.categoriesTied}}</li>
     <li *ngIf="seasonData.pointsFor != ''"><b>Points scored per week:</b> {{seasonData.pointsFor}}</li>
     <li *ngIf="seasonData.pointsAgainst != ''"><b>Points allowed per week:</b> {{seasonData.pointsAgainst}}</li>
 </ul>
+
+<br>
+
+<p class="header">Regular Season</p>
+
+<ul>
+    <li *ngIf="seasonData.division != ''"><b>In-division record: </b>{{seasonData.divisionWins}}-{{seasonData.divisionLosses}}-{{seasonData.divisionTies}}</li>
+    <li *ngIf="seasonData.division != ''"><b>Out-of-division record: </b>{{outOfDivisionRecord}}</li>
+    <li><b>Max win streak: </b><ng-container *ngIf="seasonData.winStreak != ''; else noWinStreak"></ng-container>{{seasonData.winStreak}}<ng-template #noWinStreak>N/A</ng-template></li>
+    <li><b>Max loss streak: </b><ng-container *ngIf="seasonData.lossStreak != ''; else noLossStreak"></ng-container>{{seasonData.lossStreak}}<ng-template #noLossStreak>N/A</ng-template></li>
+    <li><b>Schedule </b><i>(under construction)</i></li>
+</ul>
+
+<p class="header">Postseason</p>
+<ul *ngIf="seasonData.regSeasonPlace != '7' && seasonData.regSeasonPlace != '8'; else didNotQualify">
+    <li><b>Overall postseason record: </b>{{seasonData.playoffWins}}-{{seasonData.playoffLosses}}</li>
+    <li><b>Final postseason place: </b><ng-container *ngIf="seasonData.playoffPlace != ''; else na">{{seasonData.playoffPlace | ordinal}}</ng-container><ng-template #na>N/A</ng-template></li>
+    <li><b>Winnings: </b>${{seasonData.playoffWinnings}}</li>
+    <li><b>Playoff bracket </b><i>(under construction)</i></li>
+</ul>
+<ng-template #didNotQualify>
+    <ul>
+        <li>Did not qualify for postseason (finished 7th or 8th in the regular season).</li>
+    </ul>
+</ng-template>

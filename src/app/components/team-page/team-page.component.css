@@ -15,3 +15,12 @@ ul li {
 .align-right {
     justify-content: flex-end;
 }
+
+h1 {
+    font-size: 36px;
+}
+
+.header {
+    font-size: 24px;
+    text-decoration: underline;
+}

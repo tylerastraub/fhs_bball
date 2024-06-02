@@ -18,11 +18,16 @@ export class TeamsComponent {
   sortAscending = false;
   lastColumnSelected = "";
 
+  ngOnInit(): void {
+    this.sort('name');
+    this.sort('to');
+  }
+
   sort(column: string) {
     let coefficient = 1;
 
     if(column != this.lastColumnSelected) {
-      this.sortAscending = false;
+      this.sortAscending = this.sortAscendingByDefault(column);
     }
     this.lastColumnSelected = column;
     if(this.sortAscending === true) {
@@ -77,6 +82,46 @@ export class TeamsComponent {
     }
     
     this.sortAscending = !this.sortAscending;
+  }
+
+  sortAscendingByDefault(column: string) {
+    switch(column) {
+      case "name": {
+        return true;
+      }
+      case "from": {
+        return false;
+      }
+      case "to": {
+        return false;
+      }
+      case "wins": {
+        return false;
+      }
+      case "losses": {
+        return false;
+      }
+      case "ties": {
+        return false;
+      }
+      case "winPercent": {
+        return false;
+      }
+      case "divisionTitles": {
+        return false;
+      }
+      case "playoffs": {
+        return false;
+      }
+      case "finalsAppearances": {
+        return false;
+      }
+      case "championships": {
+        return false;
+      }
+      default:
+        return false;
+    }
   }
 
   get teams() {

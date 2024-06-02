@@ -105,4 +105,12 @@ export class TeamPageComponent {
       console.log("Error importing season data for this page! Error reason: ", err);
     });
   }
+
+  get outOfDivisionRecord() {
+    let wins = parseInt(this.seasonData.wins) - parseInt(this.seasonData.divisionWins);
+    let losses = parseInt(this.seasonData.losses) - parseInt(this.seasonData.divisionLosses);
+    let ties = parseInt(this.seasonData.ties) - parseInt(this.seasonData.divisionTies);
+
+    return wins.toString() + "-" + losses.toString() + "-" + ties.toString();
+  }
 }
