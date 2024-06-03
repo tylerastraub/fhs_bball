@@ -1,0 +1,25 @@
+<div class="seasons-list">
+    <label>SEASONS</label>
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Champion</th>
+                <th>Last Place</th>
+                <th>Rookies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let season of seasonData">
+                <td>
+                    <a routerLink="{{season.year}}">
+                        {{season.year}}
+                    </a>
+                </td>
+                <td>{{season.champion}}</td>
+                <td>{{season.lastPlace}}</td>
+                <td>{{season.rookies}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
