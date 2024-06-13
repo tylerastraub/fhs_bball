@@ -51,22 +51,22 @@ export class TeamPageComponent {
     this.route.params.subscribe(params => {
       this.teamId = params["id"];
       this.year = params["year"];
-      this.ngOnInit();
     });
   }
 
   ngOnInit(): void {
-    this.getTeamData();
-    for(let team of teamData) {
-      if(team.id === this.teamId) {
-        this.minYear = team.from;
-        this.maxYear = team.to;
-        break;
+    this.getTeamData().then(() => {
+      for(let team of teamData) {
+        if(team.id === this.teamId) {
+          this.minYear = team.from;
+          this.maxYear = team.to;
+          break;
+        }
       }
-    }
+    });
   }
 
-  getTeamData(): void {
+  async getTeamData(): Promise<void> {
     this.teamId = String(this.route.snapshot.paramMap.get('id'));
     this.year = String(this.route.snapshot.paramMap.get('year'));
     import("../../../assets/data/" + this.year + "/season-data.json").then(data => {

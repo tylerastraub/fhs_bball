@@ -1,0 +1,29 @@
+h1 {
+    font-size: 36px;
+}
+
+.season-navigation-pane {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+}
+
+.header {
+    font-size: 24px;
+    text-decoration: underline;
+    padding-top: 1rem;
+}
+
+#division-standings table {
+    min-width:520px;
+    margin-bottom: 1rem;
+}
+
+#division-standings caption {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+footer {
+    font-style: italic;
+}

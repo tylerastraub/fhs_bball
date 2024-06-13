@@ -1,1 +1,113 @@
-<p>season-page works!</p>
+<div class="season-page">
+    <h1>{{year}} Season</h1>
+    
+    <div class="season-navigation-pane">
+        <button *ngIf="year != minYear" routerLink="/seasons/{{year | seasonYearModify: false}}"><< Previous Season</button>
+        <div></div>
+        <button *ngIf="year != maxYear" routerLink="/seasons/{{year | seasonYearModify: true}}">Next Season >></button>
+    </div>
+
+    <p class="header">Regular Season Standings</p>
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th><a (click)="sortRegSeasonTable('place')">#</a></th>
+                <th><a (click)="sortRegSeasonTable('name')">Manager</a></th>
+                <th><a (click)="sortRegSeasonTable('wins')">Wins</a></th>
+                <th><a (click)="sortRegSeasonTable('losses')">Losses</a></th>
+                <th><a (click)="sortRegSeasonTable('ties')">Ties</a></th>
+                <th><a (click)="sortRegSeasonTable('winPercent')">Win%</a></th>
+                <th *ngIf="regSeasonStandings[0].categoriesWon != 0"><a (click)="sortRegSeasonTable('categories')">Categories</a></th>
+                <th *ngIf="regSeasonStandings[0].pointsFor != 0"><a (click)="sortRegSeasonTable('pointsScored')">Points Scored</a></th>
+                <th *ngIf="regSeasonStandings[0].pointsAgainst != 0"><a (click)="sortRegSeasonTable('pointsAllowed')">Points Allowed</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of regSeasonStandings">
+                <td>{{team.regSeasonPlace}}</td>
+                <td><a routerLink="/teams/{{team.id}}/{{year}}">{{team.name}}{{team.regSeasonPlace <= 6 ? '*' : ''}}</a></td>
+                <td>{{team.wins}}</td>
+                <td>{{team.losses}}</td>
+                <td>{{team.ties}}</td>
+                <td>{{team.winPercent.toFixed(3)}}</td>
+                <td *ngIf="regSeasonStandings[0].categoriesWon != 0">{{team.categoriesWon}}-{{team.categoriesLost}}-{{team.categoriesTied}}</td>
+                <td *ngIf="regSeasonStandings[0].pointsFor != 0">{{team.pointsFor}}</td>
+                <td *ngIf="regSeasonStandings[0].pointsAgainst != 0">{{team.pointsAgainst}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <footer>*Made playoffs. Division winners earn automatic bids for top 3 seeds.</footer>
+
+    <div *ngIf="regSeasonStandings[0].divisionWins != 0 && regSeasonStandings[0].divisionLosses != 0">
+        <p class="header">Division Standings</p>
+        <div id="division-standings">
+            <table *ngFor="let division of divisionStandings | keyvalue" class="table-striped">
+                <caption>{{division.key}}</caption>
+                <thead>
+                    <tr>
+                        <th style="min-width: 200px;">Manager</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th>T</th>
+                        <th>Win%</th>
+                        <th>Div. Record</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let team of division.value">
+                        <td><a routerLink="/teams/{{team.id}}/{{year}}">{{team.name}}{{team.regSeasonPlace <= 6 ? '*' : ''}}</a></td>
+                        <td>{{team.wins}}</td>
+                        <td>{{team.losses}}</td>
+                        <td>{{team.ties}}</td>
+                        <td>{{team.winPercent.toFixed(3)}}</td>
+                        <td>{{team.divisionWins}}-{{team.divisionLosses}}-{{team.divisionTies}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <p class="header">Playoffs</p>
+    <p><i>Under construction...</i></p>
+
+    <br>
+
+    <div *ngIf="regSeasonStats.length > 0">
+        <p class="header">Stats</p>
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th><a (click)="sortStatsTable('name')">Manager</a></th>
+                    <th><a (click)="sortStatsTable('fg')">FG%</a></th>
+                    <th><a (click)="sortStatsTable('ft')">FT%</a></th>
+                    <th><a (click)="sortStatsTable('threePtr')">3PM</a></th>
+                    <th><a (click)="sortStatsTable('reb')">REB</a></th>
+                    <th><a (click)="sortStatsTable('ast')">AST</a></th>
+                    <th><a (click)="sortStatsTable('stl')">STL</a></th>
+                    <th><a (click)="sortStatsTable('blk')">BLK</a></th>
+                    <th><a (click)="sortStatsTable('to')">TO</a></th>
+                    <th><a (click)="sortStatsTable('pts')">PTS</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of regSeasonStats">
+                    <td><a routerLink="/teams/{{team.id}}/{{year}}">{{team.name}}</a></td>
+                    <td>{{team.fg}}</td>
+                    <td>{{team.ft}}</td>
+                    <td>{{team.threePtr}}</td>
+                    <td>{{team.reb}}</td>
+                    <td>{{team.ast}}</td>
+                    <td>{{team.stl}}</td>
+                    <td>{{team.blk}}</td>
+                    <td>{{team.to}}</td>
+                    <td>{{team.pts}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+</div>

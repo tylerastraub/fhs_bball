@@ -57,7 +57,8 @@ body {
 
 .main {
   width: 1200px;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   margin: auto;
   box-shadow:
     0 2px 4px 0 rgb(0 0 0 / 20%),
@@ -102,6 +103,15 @@ table tr th a {
 
 .table-striped thead th {
   background-color: #d4e8f1;
+}
+
+label {
+  font-size: 3rem;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 html, body { height: 100%; }
